@@ -1,0 +1,7 @@
+This is a placeholder for a product image.
+Please replace this file with an actual JPG image named "placeholder-image.jpg".
+
+Recommended specifications:
+- Size: 300x300 pixels
+- Format: JPG
+- Content: A generic product placeholder image

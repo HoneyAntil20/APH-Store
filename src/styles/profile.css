@@ -1,0 +1,75 @@
+/* Registration Data Section Styles */
+.registration-section {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.registration-section h2 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.section-description {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.registration-data-section {
+  margin-top: 20px;
+}
+
+.registration-data-section h3 {
+  color: #444;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.registration-data-card {
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.info-item {
+  display: flex;
+  margin-bottom: 10px;
+  padding: 5px 0;
+  border-bottom: 1px dashed #eee;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-item strong {
+  flex: 0 0 150px;
+  color: #555;
+}
+
+.info-item span {
+  flex: 1;
+  color: #333;
+}
+
+.loading-data {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-style: italic;
+}
+
+.error-message {
+  color: #d9534f;
+  background-color: #f9f2f2;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+}

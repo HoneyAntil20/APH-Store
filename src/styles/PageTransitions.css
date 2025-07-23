@@ -1,0 +1,139 @@
+/* Page Transitions CSS */
+
+/* Base styles for page transitions */
+.page-transition-container {
+  position: relative;
+  min-height: 100vh;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Page transition wrapper */
+.page-transition-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.page-transition-wrapper.fadeIn {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.page-transition-wrapper.fadeOut {
+  animation: fadeOut 0.5s ease-in-out forwards;
+}
+
+/* Fade-in animation for content */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade out animation */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Slide in animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Apply to specific pages */
+.login-page {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.logout-page {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Prevent white flash during transitions */
+html, body {
+  background-color: #f5f7fa; /* Match the light-gray from our color scheme */
+}
+
+/* Smooth transition for all elements */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Preload animation for content */
+.content-preload {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out 0.2s forwards;
+}
+
+/* Loading indicator */
+.page-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(66, 133, 244, 0.2);
+  border-radius: 50%;
+  border-top-color: #4285F4;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error message styling */
+.error-message {
+  background-color: #ffebee;
+  color: #d32f2f;
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  border-left: 4px solid #d32f2f;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.error-message svg {
+  margin-right: 10px;
+  font-size: 16px;
+}

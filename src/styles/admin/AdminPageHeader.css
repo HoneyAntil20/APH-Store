@@ -1,0 +1,12 @@
+.admin-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.admin-page-header h1 {
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+}

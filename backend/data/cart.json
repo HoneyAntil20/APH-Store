@@ -1,0 +1,25 @@
+{
+  "cartItems": [
+    {
+      "id": "1753247683723",
+      "customerId": "a@gmail.com",
+      "productId": "1752833085947djf162qc1",
+      "price": 25.99,
+      "quantity": 1
+    },
+    {
+      "id": "1753247696041",
+      "customerId": "a@gmail.com",
+      "productId": "1752832385168ptqpj3k4b",
+      "price": 149.99,
+      "quantity": 1
+    },
+    {
+      "id": "1753248487490",
+      "customerId": "a@gmail.com",
+      "productId": "sports001",
+      "price": 159.99,
+      "quantity": 1
+    }
+  ]
+}

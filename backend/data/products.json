@@ -1,0 +1,214 @@
+[
+  {
+    "_id": "1752832385164pgmsnkeht",
+    "title": "Premium Wireless Headphones",
+    "price": 199.99,
+    "originalPrice": 249.99,
+    "discount": 20,
+    "description": "High-quality wireless headphones with noise cancellation",
+    "features": [
+      "Noise Cancellation",
+      "30-hour battery",
+      "Bluetooth 5.0"
+    ],
+    "images": [
+      "/assets/headphones1.jpg",
+      "/assets/headphones2.jpg"
+    ],
+    "image": "/assets/headphones1.jpg",
+    "category": "Electronics",
+    "stock": 50,
+    "rating": 4.5,
+    "reviewCount": 128,
+    "reviews": [],
+    "createdAt": "2025-07-18T09:53:05.164Z",
+    "updatedAt": "2025-07-18T09:53:05.165Z"
+  },
+  {
+    "_id": "17528323851662m3zko36g",
+    "title": "Smart Fitness Watch",
+    "price": 299.99,
+    "originalPrice": 399.99,
+    "discount": 25,
+    "description": "Advanced fitness tracking with heart rate monitor",
+    "features": [
+      "Heart Rate Monitor",
+      "GPS",
+      "Water Resistant",
+      "7-day battery"
+    ],
+    "images": [
+      "/assets/watch1.jpg",
+      "/assets/watch2.jpg"
+    ],
+    "image": "/assets/watch1.jpg",
+    "category": "Electronics",
+    "stock": 30,
+    "rating": 4.7,
+    "reviewCount": 89,
+    "reviews": [],
+    "createdAt": "2025-07-18T09:53:05.166Z",
+    "updatedAt": "2025-07-18T09:53:05.166Z"
+  },
+  {
+    "_id": "1752832385167nb9qdxpgj",
+    "title": "Organic Cotton T-Shirt",
+    "price": 29.99,
+    "originalPrice": 39.99,
+    "discount": 25,
+    "description": "Comfortable organic cotton t-shirt in various colors",
+    "features": [
+      "100% Organic Cotton",
+      "Machine Washable",
+      "Available in 5 colors"
+    ],
+    "images": [
+      "/assets/tshirt1.jpg",
+      "/assets/tshirt2.jpg"
+    ],
+    "image": "/assets/tshirt1.jpg",
+    "category": "Clothing",
+    "stock": 100,
+    "rating": 4.3,
+    "reviewCount": 45,
+    "reviews": [],
+    "createdAt": "2025-07-18T09:53:05.167Z",
+    "updatedAt": "2025-07-18T09:53:05.167Z"
+  },
+  {
+    "_id": "1752832385167kjoafkpwp",
+    "title": "Professional Camera Lens",
+    "price": 899.99,
+    "originalPrice": 1199.99,
+    "discount": 25,
+    "description": "Professional 85mm f/1.4 portrait lens",
+    "features": [
+      "85mm focal length",
+      "f/1.4 aperture",
+      "Weather sealed"
+    ],
+    "images": [
+      "/assets/lens1.jpg",
+      "/assets/lens2.jpg"
+    ],
+    "image": "/assets/lens1.jpg",
+    "category": "Photography",
+    "stock": 15,
+    "rating": 4.9,
+    "reviewCount": 67,
+    "reviews": [],
+    "createdAt": "2025-07-18T09:53:05.167Z",
+    "updatedAt": "2025-07-18T09:53:05.167Z"
+  },
+  {
+    "_id": "1752832385168ptqpj3k4b",
+    "title": "Gaming Mechanical Keyboard",
+    "price": 149.99,
+    "originalPrice": 199.99,
+    "discount": 25,
+    "description": "RGB mechanical gaming keyboard with blue switches",
+    "features": [
+      "Mechanical Blue Switches",
+      "RGB Backlighting",
+      "Programmable Keys"
+    ],
+    "images": [
+      "/assets/keyboard1.jpg",
+      "/assets/keyboard2.jpg"
+    ],
+    "image": "/assets/keyboard1.jpg",
+    "category": "Electronics",
+    "stock": 25,
+    "rating": 4.6,
+    "reviewCount": 156,
+    "reviews": [],
+    "createdAt": "2025-07-18T09:53:05.168Z",
+    "updatedAt": "2025-07-18T09:53:05.168Z"
+  },
+  {
+    "_id": "1752832690961z8y7n1r81",
+    "title": "Test API Product",
+    "price": 49.99,
+    "originalPrice": 69.99,
+    "discount": 29,
+    "description": "Created via API test",
+    "features": [
+      "API Created",
+      "Test Product"
+    ],
+    "image": "/assets/test.jpg",
+    "category": "Electronics",
+    "stock": 10,
+    "rating": 0,
+    "reviewCount": 0,
+    "reviews": [],
+    "user": "local-admin",
+    "createdAt": "2025-07-18T09:58:10.961Z",
+    "updatedAt": "2025-07-18T09:58:10.962Z"
+  },
+  {
+    "_id": "1752833085947djf162qc1",
+    "title": "Website Integration Test",
+    "price": 25.99,
+    "originalPrice": 35.99,
+    "discount": 28,
+    "description": "Product created to test website integration",
+    "features": [
+      "Website Integration",
+      "Live Test"
+    ],
+    "image": "/assets/integration-test.jpg",
+    "category": "Electronics",
+    "stock": 5,
+    "rating": 0,
+    "reviewCount": 0,
+    "reviews": [],
+    "user": "local-admin",
+    "createdAt": "2025-07-18T10:04:45.947Z",
+    "updatedAt": "2025-07-18T10:04:45.947Z"
+  },
+  {
+    "_id": "17529323954517kjuedase",
+    "title": "phone",
+    "price": 111,
+    "originalPrice": 133.2,
+    "discount": 0,
+    "description": "q",
+    "features": [
+      "2",
+      "wqd",
+      "qdd"
+    ],
+    "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.theverge.com%2F22163811%2Fbest-phone&psig=AOvVaw1tSMWZKsv2bFrm9kEaI_dt&ust=1753018762945000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCJiwpfeFyY4DFQAAAAAdAAAAABAE",
+    "category": "electronics",
+    "stock": 11,
+    "rating": 0,
+    "reviewCount": 0,
+    "reviews": [],
+    "user": "local-admin",
+    "createdAt": "2025-07-19T13:39:55.451Z",
+    "updatedAt": "2025-07-19T13:40:16.569Z"
+  },
+  {
+    "_id": "17532470021427d3a4z5r2",
+    "title": "IPhone 16",
+    "price": 110998,
+    "originalPrice": 133197.6,
+    "discount": 0,
+    "description": "apple product",
+    "features": [],
+    "images": [
+      "https://www.google.com/imgres?q=iphone%2016&imgurl=https%3A%2F%2Fwww.designinfo.in%2Fwp-content%2Fuploads%2F2024%2F09%2FApple-iPhone-16-Pro-128GB-Black-Titanium-8-485x485-optimized.webp&imgrefurl=https%3A%2F%2Fwww.designinfo.in%2Fp%2Fapple-iphone-16-pro-256gb-black-titanium%2F&docid=EOkDqY4GX-TDoM&tbnid=MD909JLSXsWJ3M&vet=12ahUKEwjzi-bgmdKOAxUERmwGHcVYDpcQM3oECBUQAA..i&w=485&h=485&hcb=2&ved=2ahUKEwjzi-bgmdKOAxUERmwGHcVYDpcQM3oECBUQAA",
+      "https://www.google.com/imgres?q=iphone%2016&imgurl=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F712SuRmHG4L._UF1000%2C1000_QL80_.jpg&imgrefurl=https%3A%2F%2Fwww.amazon.in%2FiPhone-16-128-GB-Ultramarine%2Fdp%2FB0DGJ7TGDR&docid=B-giet4xkpBoMM&tbnid=wGaX1nRlySzr-M&vet=12ahUKEwjzi-bgmdKOAxUERmwGHcVYDpcQM3oECAkQAA..i&w=1000&h=1000&hcb=2&ved=2ahUKEwjzi-bgmdKOAxUERmwGHcVYDpcQM3oECAkQAA"
+    ],
+    "image": "https://www.google.com/imgres?q=iphone%2016&imgurl=https%3A%2F%2Fwww.designinfo.in%2Fwp-content%2Fuploads%2F2024%2F09%2FApple-iPhone-16-Pro-128GB-Black-Titanium-8-485x485-optimized.webp&imgrefurl=https%3A%2F%2Fwww.designinfo.in%2Fp%2Fapple-iphone-16-pro-256gb-black-titanium%2F&docid=EOkDqY4GX-TDoM&tbnid=MD909JLSXsWJ3M&vet=12ahUKEwjzi-bgmdKOAxUERmwGHcVYDpcQM3oECBUQAA..i&w=485&h=485&hcb=2&ved=2ahUKEwjzi-bgmdKOAxUERmwGHcVYDpcQM3oECBUQAA",
+    "category": "electronics",
+    "stock": 25,
+    "rating": 0,
+    "reviewCount": 0,
+    "reviews": [],
+    "user": "local-admin",
+    "createdAt": "2025-07-23T05:03:22.142Z",
+    "updatedAt": "2025-07-23T05:03:22.142Z"
+  }
+]

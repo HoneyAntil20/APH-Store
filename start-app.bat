@@ -1,0 +1,9 @@
+@echo off
+echo Starting APH Store Application...
+echo.
+echo Starting Backend API...
+start "APH Store Backend" cmd /k "cd backend && npm start"
+echo.
+echo Starting Frontend React App...
+timeout /t 3 /nobreak >nul
+npm start

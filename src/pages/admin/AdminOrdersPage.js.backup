@@ -1,0 +1,689 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faTachometerAlt, 
+  faShoppingCart, 
+  faUsers, 
+  faBoxes, 
+  faChartLine, 
+  faSignOutAlt, 
+  faUserCircle, 
+  faBell, 
+  faEnvelope, 
+  faSearch, 
+  faFilter, 
+  faSort, 
+  faEye, 
+  faEdit, 
+  faPrint, 
+  faCalendarAlt,
+  faShoppingBasket 
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  Box,
+  Container,
+  Grid,
+  Paper,
+  Typography,
+  Card,
+  CardContent,
+  Button,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Chip,
+  TextField,
+  Stack,
+  Divider,
+  IconButton,
+  Avatar,
+  Badge,
+  AppBar,
+  Toolbar,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Menu,
+  MenuList,
+  MenuItem as MuiMenuItem
+} from '@mui/material';
+import {
+  Dashboard as DashboardIcon,
+  ShoppingCart as ShoppingCartIcon,
+  People as PeopleIcon,
+  Inventory as InventoryIcon,
+  Analytics as AnalyticsIcon,
+  Logout as LogoutIcon,
+  AccountCircle as AccountCircleIcon,
+  Notifications as NotificationsIcon,
+  Email as EmailIcon,
+  Search as SearchIcon,
+  FilterList as FilterListIcon,
+  Sort as SortIcon,
+  Visibility as VisibilityIcon,
+  Edit as EditIcon,
+  Print as PrintIcon,
+  CalendarToday as CalendarIcon,
+  ShoppingBasket as ShoppingBasketIcon,
+  CheckCircle as CheckCircleIcon,
+  AccessTime as AccessTimeIcon,
+  LocalShipping as LocalShippingIcon,
+  Cancel as CancelIcon,
+  MoreVert as MoreVertIcon
+} from '@mui/icons-material';
+
+const AdminOrdersPage = () => {
+  // Sample orders data
+  const [orders, setOrders] = useState([
+    {
+      id: 'ORD-12345',
+      customer: 'John Doe',
+      email: 'john.doe@example.com',
+      date: '2023-07-10',
+      total: 249.99,
+      status: 'Delivered',
+      items: 2,
+      payment: 'Credit Card'
+    },
+    {
+      id: 'ORD-12346',
+      customer: 'Jane Smith',
+      email: 'jane.smith@example.com',
+      date: '2023-07-09',
+      total: 129.50,
+      status: 'Processing',
+      items: 1,
+      payment: 'PayPal'
+    },
+    {
+      id: 'ORD-12347',
+      customer: 'Robert Johnson',
+      email: 'robert.johnson@example.com',
+      date: '2023-07-09',
+      total: 399.95,
+      status: 'Shipped',
+      items: 3,
+      payment: 'Credit Card'
+    },
+    {
+      id: 'ORD-12348',
+      customer: 'Emily Davis',
+      email: 'emily.davis@example.com',
+      date: '2023-07-08',
+      total: 89.99,
+      status: 'Pending',
+      items: 1,
+      payment: 'PayPal'
+    },
+    {
+      id: 'ORD-12349',
+      customer: 'Michael Wilson',
+      email: 'michael.wilson@example.com',
+      date: '2023-07-08',
+      total: 159.75,
+      status: 'Delivered',
+      items: 2,
+      payment: 'Credit Card'
+    },
+    {
+      id: 'ORD-12350',
+      customer: 'Sarah Brown',
+      email: 'sarah.brown@example.com',
+      date: '2023-07-07',
+      total: 299.99,
+      status: 'Delivered',
+      items: 1,
+      payment: 'Credit Card'
+    },
+    {
+      id: 'ORD-12351',
+      customer: 'David Miller',
+      email: 'david.miller@example.com',
+      date: '2023-07-07',
+      total: 149.95,
+      status: 'Cancelled',
+      items: 2,
+      payment: 'PayPal'
+    },
+    {
+      id: 'ORD-12352',
+      customer: 'Jennifer Taylor',
+      email: 'jennifer.taylor@example.com',
+      date: '2023-07-06',
+      total: 79.99,
+      status: 'Delivered',
+      items: 1,
+      payment: 'Credit Card'
+    },
+    {
+      id: 'ORD-12353',
+      customer: 'Thomas Anderson',
+      email: 'thomas.anderson@example.com',
+      date: '2023-07-06',
+      total: 199.99,
+      status: 'Processing',
+      items: 1,
+      payment: 'PayPal'
+    },
+    {
+      id: 'ORD-12354',
+      customer: 'Lisa White',
+      email: 'lisa.white@example.com',
+      date: '2023-07-05',
+      total: 349.95,
+      status: 'Shipped',
+      items: 3,
+      payment: 'Credit Card'
+    }
+  ]);
+
+  // Filter and sort states
+  const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState('All');
+  const [dateFilter, setDateFilter] = useState('');
+  const [sortField, setSortField] = useState('date');
+  const [sortDirection, setSortDirection] = useState('desc');
+
+  // Modal states
+  const [showViewModal, setShowViewModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [currentOrder, setCurrentOrder] = useState(null);
+
+  // Handle search
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  // Handle status filter
+  const handleStatusFilter = (e) => {
+    setStatusFilter(e.target.value);
+  };
+
+  // Handle date filter
+  const handleDateFilter = (e) => {
+    setDateFilter(e.target.value);
+  };
+
+  // Handle sort
+  const handleSort = (field) => {
+    if (sortField === field) {
+      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      setSortDirection('asc');
+    }
+  };
+
+  // Open view order modal
+  const openViewModal = (order) => {
+    setCurrentOrder(order);
+    setShowViewModal(true);
+  };
+
+  // Open edit order modal
+  const openEditModal = (order) => {
+    setCurrentOrder(order);
+    setShowEditModal(true);
+  };
+
+  // Close modals
+  const closeModals = () => {
+    setShowViewModal(false);
+    setShowEditModal(false);
+    setCurrentOrder(null);
+  };
+
+  // Handle edit order form change
+  const handleEditOrderChange = (e) => {
+    const { name, value } = e.target;
+    setCurrentOrder({
+      ...currentOrder,
+      [name]: value
+    });
+  };
+
+  // Update order
+  const updateOrder = () => {
+    setOrders(orders.map(order => 
+      order.id === currentOrder.id ? currentOrder : order
+    ));
+    closeModals();
+  };
+
+  // Filter and sort orders
+  const filteredOrders = orders
+    .filter(order => 
+      (order.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
+       order.customer.toLowerCase().includes(searchTerm.toLowerCase()) ||
+       order.email.toLowerCase().includes(searchTerm.toLowerCase())) &&
+      (statusFilter === 'All' || order.status === statusFilter) &&
+      (dateFilter === '' || order.date === dateFilter)
+    )
+    .sort((a, b) => {
+      if (sortDirection === 'asc') {
+        return a[sortField] > b[sortField] ? 1 : -1;
+      } else {
+        return a[sortField] < b[sortField] ? 1 : -1;
+      }
+    });
+
+  // Get unique statuses for filter
+  const statuses = ['All', ...new Set(orders.map(order => order.status))];
+
+  return (
+    <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+      {/* Admin Sidebar */}
+      <Drawer
+        variant="permanent"
+        sx={{
+          width: 280,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: 280,
+            boxSizing: 'border-box',
+            backgroundColor: '#1976d2',
+            color: 'white',
+          },
+        }}
+      >
+        <Box sx={{ p: 3, textAlign: 'center' }}>
+          <Typography variant="h5" component="h2" fontWeight="bold">
+            APH Store
+          </Typography>
+          <Typography variant="body2" sx={{ opacity: 0.8 }}>
+            Admin Panel
+          </Typography>
+        </Box>
+        <Divider sx={{ borderColor: 'rgba(255, 255, 255, 0.12)' }} />
+        <List>
+          <ListItemButton component={Link} to="/admin">
+            <ListItemIcon sx={{ color: 'white' }}>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" />
+          </ListItemButton>
+          <ListItemButton component={Link} to="/admin/orders" selected>
+            <ListItemIcon sx={{ color: 'white' }}>
+              <ShoppingCartIcon />
+            </ListItemIcon>
+            <ListItemText primary="Orders" />
+          </ListItemButton>
+          <ListItemButton component={Link} to="/admin/products">
+            <ListItemIcon sx={{ color: 'white' }}>
+              <InventoryIcon />
+            </ListItemIcon>
+            <ListItemText primary="Products" />
+          </ListItemButton>
+          <ListItemButton component={Link} to="/admin/customers">
+            <ListItemIcon sx={{ color: 'white' }}>
+              <PeopleIcon />
+            </ListItemIcon>
+            <ListItemText primary="Customers" />
+          </ListItemButton>
+          <ListItemButton component={Link} to="/admin/analytics">
+            <ListItemIcon sx={{ color: 'white' }}>
+              <AnalyticsIcon />
+            </ListItemIcon>
+            <ListItemText primary="Analytics" />
+          </ListItemButton>
+          <ListItemButton component={Link} to="/admin/cart">
+            <ListItemIcon sx={{ color: 'white' }}>
+              <ShoppingBasketIcon />
+            </ListItemIcon>
+            <ListItemText primary="Cart Management" />
+          </ListItemButton>
+        </List>
+        <Box sx={{ mt: 'auto', p: 2 }}>
+          <ListItemButton component={Link} to="/">
+            <ListItemIcon sx={{ color: 'white' }}>
+              <LogoutIcon />
+            </ListItemIcon>
+            <ListItemText primary="Logout" />
+          </ListItemButton>
+        </Box>
+      </Drawer>
+
+      {/* Admin Content */}
+      <Box sx={{ flexGrow: 1 }}>
+        {/* Admin Header */}
+        <AppBar position="static" sx={{ backgroundColor: 'white', color: 'black' }}>
+          <Toolbar>
+            <TextField
+              variant="outlined"
+              placeholder="Search orders..."
+              value={searchTerm}
+              onChange={handleSearch}
+              size="small"
+              sx={{ flexGrow: 1, maxWidth: 400 }}
+              InputProps={{
+                startAdornment: (
+                  <SearchIcon sx={{ mr: 1, color: 'action.active' }} />
+                ),
+              }}
+            />
+            <Box sx={{ display: 'flex', alignItems: 'center', ml: 2 }}>
+              <IconButton>
+                <Badge badgeContent={3} color="error">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+              <IconButton>
+                <Badge badgeContent={5} color="error">
+                  <EmailIcon />
+                </Badge>
+              </IconButton>
+              <Box sx={{ display: 'flex', alignItems: 'center', ml: 2 }}>
+                <Avatar sx={{ mr: 1 }}>
+                  <AccountCircleIcon />
+                </Avatar>
+                <Typography variant="body2">Admin User</Typography>
+              </Box>
+            </Box>
+          </Toolbar>
+        </AppBar>
+
+        {/* Orders Content */}
+        <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+            <Typography variant="h4" component="h1" fontWeight="bold">
+              Orders
+            </Typography>
+            <Button
+              variant="contained"
+              startIcon={<PrintIcon />}
+              sx={{ backgroundColor: '#1976d2' }}
+            >
+              Export Orders
+            </Button>
+          </Box>
+
+          {/* Filters */}
+          <Paper sx={{ p: 2, mb: 3 }}>
+            <Grid container spacing={2} alignItems="center">
+              <Grid item xs={12} sm={6} md={3}>
+                <FormControl fullWidth size="small">
+                  <InputLabel>Status</InputLabel>
+                  <Select value={statusFilter} onChange={handleStatusFilter} label="Status">
+                    {statuses.map((status, index) => (
+                      <MenuItem key={index} value={status}>{status}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={6} md={3}>
+                <TextField
+                  type="date"
+                  label="Date"
+                  value={dateFilter}
+                  onChange={handleDateFilter}
+                  fullWidth
+                  size="small"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Grid>
+            </Grid>
+          </Paper>
+
+          {/* Orders Table */}
+          <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+            <TableContainer sx={{ maxHeight: 440 }}>
+              <Table stickyHeader aria-label="orders table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell onClick={() => handleSort('id')} sx={{ cursor: 'pointer' }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        Order ID <SortIcon sx={{ ml: 1 }} />
+                      </Box>
+                    </TableCell>
+                    <TableCell onClick={() => handleSort('customer')} sx={{ cursor: 'pointer' }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        Customer <SortIcon sx={{ ml: 1 }} />
+                      </Box>
+                    </TableCell>
+                    <TableCell onClick={() => handleSort('date')} sx={{ cursor: 'pointer' }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        Date <SortIcon sx={{ ml: 1 }} />
+                      </Box>
+                    </TableCell>
+                    <TableCell onClick={() => handleSort('total')} sx={{ cursor: 'pointer' }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        Total <SortIcon sx={{ ml: 1 }} />
+                      </Box>
+                    </TableCell>
+                    <TableCell onClick={() => handleSort('status')} sx={{ cursor: 'pointer' }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        Status <SortIcon sx={{ ml: 1 }} />
+                      </Box>
+                    </TableCell>
+                    <TableCell onClick={() => handleSort('payment')} sx={{ cursor: 'pointer' }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        Payment <SortIcon sx={{ ml: 1 }} />
+                      </Box>
+                    </TableCell>
+                    <TableCell>Actions</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {filteredOrders.map(order => (
+                    <TableRow key={order.id} hover>
+                      <TableCell>{order.id}</TableCell>
+                      <TableCell>{order.customer}</TableCell>
+                      <TableCell>{order.date}</TableCell>
+                      <TableCell>₹{order.total.toFixed(2)}</TableCell>
+                      <TableCell>
+                        <Chip 
+                          label={order.status}
+                          color={
+                            order.status === 'Delivered' ? 'success' :
+                            order.status === 'Processing' ? 'warning' :
+                            order.status === 'Shipped' ? 'info' :
+                            order.status === 'Cancelled' ? 'error' : 'default'
+                          }
+                          size="small"
+                        />
+                      </TableCell>
+                      <TableCell>{order.payment}</TableCell>
+                      <TableCell>
+                        <IconButton
+                          size="small"
+                          onClick={() => openViewModal(order)}
+                          title="View"
+                        >
+                          <VisibilityIcon />
+                        </IconButton>
+                        <IconButton
+                          size="small"
+                          onClick={() => openEditModal(order)}
+                          title="Edit"
+                        >
+                          <EditIcon />
+                        </IconButton>
+                        <IconButton
+                          size="small"
+                          title="Print"
+                        >
+                          <PrintIcon />
+                        </IconButton>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>\r\n          </Paper>\r\n\r\n          {/* Pagination */}\r\n          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>\r\n            <Stack direction="row" spacing={1}>\r\n              <Button variant="outlined" size="small">Previous</Button>\r\n              <Button variant="contained" size="small">1</Button>\r\n              <Button variant="outlined" size="small">2</Button>\r\n              <Button variant="outlined" size="small">3</Button>\r\n              <Button variant="outlined" size="small">Next</Button>\r\n            </Stack>\r\n          </Box>\r\n        </Container>\r\n      </Box>
+
+      {/* View Order Modal */}
+      {showViewModal && currentOrder && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <div className="modal-header">
+              <h2>Order Details - {currentOrder.id}</h2>
+              <button className="modal-close" onClick={closeModals}>&times;</button>
+            </div>
+            <div className="modal-body">
+              <div className="order-details">
+                <div className="order-info">
+                  <h3>Order Information</h3>
+                  <p><strong>Order ID:</strong> {currentOrder.id}</p>
+                  <p><strong>Date:</strong> {currentOrder.date}</p>
+                  <p><strong>Status:</strong> 
+                    <span className={`status-badge ${currentOrder.status.toLowerCase()}`}>
+                      {currentOrder.status}
+                    </span>
+                  </p>
+                  <p><strong>Payment Method:</strong> {currentOrder.payment}</p>
+                  <p><strong>Total:</strong> ₹{currentOrder.total.toFixed(2)}</p>
+                </div>
+                
+                <div className="customer-info">
+                  <h3>Customer Information</h3>
+                  <p><strong>Name:</strong> {currentOrder.customer}</p>
+                  <p><strong>Email:</strong> {currentOrder.email}</p>
+                  <p><strong>Shipping Address:</strong> 123 Main St, City, Country</p>
+                  <p><strong>Phone:</strong> +1 (123) 456-7890</p>
+                </div>
+              </div>
+              
+              <div className="order-items">
+                <h3>Order Items</h3>
+                <table className="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Product</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Wireless Bluetooth Earbuds</td>
+                      <td>$49.99</td>
+                      <td>1</td>
+                      <td>$49.99</td>
+                    </tr>
+                    <tr>
+                      <td>Smart Watch Series 5</td>
+                      <td>$199.99</td>
+                      <td>1</td>
+                      <td>$199.99</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colSpan="3" className="text-right"><strong>Subtotal</strong></td>
+                      <td>$249.98</td>
+                    </tr>
+                    <tr>
+                      <td colSpan="3" className="text-right"><strong>Shipping</strong></td>
+                      <td>$0.00</td>
+                    </tr>
+                    <tr>
+                      <td colSpan="3" className="text-right"><strong>Total</strong></td>
+                      <td>$249.98</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button className="btn-outline" onClick={closeModals}>Close</button>
+              <button className="btn">
+                <FontAwesomeIcon icon={faPrint} /> Print Order
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Order Modal */}
+      {showEditModal && currentOrder && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <div className="modal-header">
+              <h2>Edit Order - {currentOrder.id}</h2>
+              <button className="modal-close" onClick={closeModals}>&times;</button>
+            </div>
+            <div className="modal-body">
+              <div className="form-group">
+                <label htmlFor="status">Order Status</label>
+                <select 
+                  id="status" 
+                  name="status" 
+                  value={currentOrder.status} 
+                  onChange={handleEditOrderChange} 
+                  required
+                >
+                  <option value="Pending">Pending</option>
+                  <option value="Processing">Processing</option>
+                  <option value="Shipped">Shipped</option>
+                  <option value="Delivered">Delivered</option>
+                  <option value="Cancelled">Cancelled</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="customer">Customer Name</label>
+                <input 
+                  type="text" 
+                  id="customer" 
+                  name="customer" 
+                  value={currentOrder.customer} 
+                  onChange={handleEditOrderChange} 
+                  required 
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Customer Email</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  value={currentOrder.email} 
+                  onChange={handleEditOrderChange} 
+                  required 
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="payment">Payment Method</label>
+                <select 
+                  id="payment" 
+                  name="payment" 
+                  value={currentOrder.payment} 
+                  onChange={handleEditOrderChange} 
+                  required
+                >
+                  <option value="Credit Card">Credit Card</option>
+                  <option value="PayPal">PayPal</option>
+                  <option value="Bank Transfer">Bank Transfer</option>
+                </select>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button className="btn-outline" onClick={closeModals}>Cancel</button>
+              <button className="btn" onClick={updateOrder}>Update Order</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default AdminOrdersPage;
+
